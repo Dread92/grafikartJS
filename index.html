@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        const phrase ="Vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd'hui avec vous, je dirais que c'est d'abord des rencontres. Des gens qui m'ont tendu la main, peut-être à un moment où je ne pouvais pas, où j'étais seul chez moi. Et c'est assez curieux de se dire que les hasards, les rencontres, forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l'interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n'est pas mon cas, comme je disais là, puisque moi au contraire, j'ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie... je ne suis qu'amour ! Et finalement, quand beaucoup de gens aujourd'hui me disent « Mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c'est ce goût de l'amour ce goût donc qui m'a poussé aujourd'hui à entreprendre une construction mécanique, mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi"
+        const frequencies ={}
+        const ignored =[',', '?', ':','!','"','...']
+      
+        let cleanedPhrase = phrase.toLowerCase()
+        for (let character of ignored){
+            cleanedPhrase = cleanedPhrase.replaceAll(character,'')
+        }
+        const words = cleanedPhrase.split(' ')
+        for ( let word of words ) {
+           if( frequencies[word]){
+            frequencies[word]++
+           }else {
+            frequencies[word]=1
+           }
+        }
+        const frequenciesArray=[]
+        for (let k in frequencies){
+            frequenciesArray.push({
+                word: k,
+                count: frequencies[k]
+            })
+        }
+        frequenciesArray.sort((a,b)=> b.count - a.count)
+        console.log(`Les mots les plus fréquents sont ${frequenciesArray[0].word},${frequenciesArray[1].word},${frequenciesArray[2].word}`)
+
+
+/*
+const students = [
+    {
+        name: 'John',
+        notes: [1, 20, 18, 19, 12]
+    },
+    {
+        name: 'Jane',
+        notes: [17, 18, 20, 13, 15]
+    },
+    {
+        name: 'Sophie',
+        notes: [17, 12, 14, 15, 13]
+    },
+    {
+        name: 'Marc',
+        notes: [2, 3, 5, 8, 9]
+    },
+    {
+        name: 'Manon',
+        notes: [18, 17, 18, 19, 12]
+    }
+]
+
+    const moyenne =(notes) => {
+      let sum = 0 
+      for (let note of notes){
+        sum= sum+note
+      }
+     return sum/notes.length
+    }
+
+    const compareStudent = (a, b) =>{
+        return b.moyenne - a.moyenne
+    }
+
+
+    for ( student of students ) {
+        student.moyenne=moyenne(student.notes)
+        student.worst= Math.min(...student.notes)
+        student.best= Math.max(...student.notes)
+
+    }
+        
+    students.sort(compareStudent)
+
+    const formatStudent = (student) => {
+        return `${student.name} avec une moyenne de ${student.moyenne}`
+
+    }
+
+        console.log(`Top 3 étudiant
+        1: ${formatStudent(students[0])}
+        2: ${formatStudent(students[1])}
+        3: ${formatStudent(students[2])}
+        `)
+
+    
+
+     
+       /*  
+     
+        function isPalindrome (word){
+            const letters= word.split('')
+            letters.reverse()
+            const reversedWord= letters.join('')
+            console.log(letters)
+            return word.toUpperCase()===reversedWord
+        }
+
+        const words ={
+            kayak: true,
+            SOS: true,
+            Kayak: true,
+            Bonjour: false,
+        }
+       for(let word in words )
+  */
+    </script>
+
+
+</head>
+<body> 
+    
+</body>
+</html>
