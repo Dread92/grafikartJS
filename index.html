@@ -79,9 +79,12 @@ console.log(l.findBooksByLetter('S'))
 
 
 
-        /*
+    
         class Rectangle {
             constructor (width, height){
+               /* if (width <=0 || height <=0){
+                    throw new Error('Impossible d avoir une forme geometrique avec dimensions negatives')
+                }*/
                 this.width = width 
                 this.height = height 
 
@@ -105,9 +108,13 @@ console.log(l.findBooksByLetter('S'))
                 super(width, width)
             }
         }
-
-
-
+/*
+        try {
+            const r = new Rectangle(-10, 20)
+        } catch (e) {
+            console.log(e.message)
+        }
+*/
 
 
         const r = new Rectangle (10,20);
